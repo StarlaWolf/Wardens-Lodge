@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <g transform="translate(100,100)">
+    <!-- Petals radiating from center -->
+    <line x1="0" y1="0" x2="0" y2="-75" stroke="#C97B5A" stroke-width="8" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="0" y2="75" stroke="#C97B5A" stroke-width="8" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="75" y2="0" stroke="#C97B5A" stroke-width="8" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-75" y2="0" stroke="#C97B5A" stroke-width="8" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="53" y2="-53" stroke="#C97B5A" stroke-width="8" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-53" y2="-53" stroke="#C97B5A" stroke-width="8" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="53" y2="53" stroke="#C97B5A" stroke-width="8" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-53" y2="53" stroke="#C97B5A" stroke-width="8" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="28" y2="-70" stroke="#C97B5A" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-28" y2="-70" stroke="#C97B5A" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="28" y2="70" stroke="#C97B5A" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-28" y2="70" stroke="#C97B5A" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="70" y2="-28" stroke="#C97B5A" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-70" y2="-28" stroke="#C97B5A" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="70" y2="28" stroke="#C97B5A" stroke-width="6" stroke-linecap="round"/>
+    <line x1="0" y1="0" x2="-70" y2="28" stroke="#C97B5A" stroke-width="6" stroke-linecap="round"/>
+    <!-- Center circle -->
+    <circle cx="0" cy="0" r="12" fill="#C97B5A"/>
+  </g>
+</svg>

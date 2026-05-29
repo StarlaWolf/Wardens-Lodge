@@ -1,0 +1,19 @@
+-- False Floor (Fixed Touch Detection)
+local part = script.Parent
+local fallDelay = 0.1 
+local respawnDelay = 5 
+
+part.Touched:Connect(function(hit)
+	local character = hit.Parent
+	local humanoid = character:FindFirstChild("Humanoid")
+
+	if humanoid then
+		task.wait(fallDelay)
+		part.CanCollide = false
+		part.Transparency = 0.7
+		task.wait(respawnDelay)
+		part.CanCollide = true
+		part.Transparency = 0
+	end
+end)
+

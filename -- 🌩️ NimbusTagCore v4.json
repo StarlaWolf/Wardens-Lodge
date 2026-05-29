@@ -1,0 +1,288 @@
+-- 🌩️ NimbusTagCore v4
+-- Nimbus Tag by Fenra & Cael
+-- ServerScriptService
+
+local Players = game:GetService("Players")
+local Teams = game:GetService("Teams")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Workspace = game:GetService("Workspace")
+
+local ROUND_DURATION = 120
+local LOBBY_COUNTDOWN = 15
+local MIN_PLAYERS = 2
+
+-- ================================================
+-- RemoteEvents
+-- ================================================
+local nimbusEvents = ReplicatedStorage:FindFirstChild("NimbusEvents")
+if not nimbusEvents then
+	nimbusEvents = Instance.new("Folder")
+	nimbusEvents.Name = "NimbusEvents"
+	nimbusEvents.Parent = ReplicatedStorage
+end
+
+local function getOrCreate(parent, name)
+	local existing = parent:FindFirstChild(name)
+	if existing then return existing end
+	local e = Instance.new("RemoteEvent")
+	e.Name = name
+	e.Parent = parent
+	return e
+end
+
+local taggedEvent     = getOrCreate(nimbusEvents, "PlayerTagged")
+local timerEvent      = getOrCreate(nimbusEvents, "TimerUpdate")
+local roundEndEvent   = getOrCreate(nimbusEvents, "RoundEnd")
+local roundStartEvent = getOrCreate(nimbusEvents, "RoundStart")
+local lobbyEvent      = getOrCreate(nimbusEvents, "LobbyCountdown")
+
+print("🌩️ NimbusTagCore v4 loaded.")
+
+-- ================================================
+-- Teams
+-- ================================================
+local survivorTeam = Teams:FindFirstChild("Survivors")
+if not survivorTeam then
+	survivorTeam = Instance.new("Team")
+	survivorTeam.Name = "Survivors"
+	survivorTeam.TeamColor = BrickColor.new("Bright blue")
+	survivorTeam.AutoAssignable = false
+	survivorTeam.Parent = Teams
+end
+
+local nimbusTeam = Teams:FindFirstChild("Nimbus")
+if not nimbusTeam then
+	nimbusTeam = Instance.new("Team")
+	nimbusTeam.Name = "Nimbus"
+	nimbusTeam.TeamColor = BrickColor.new("Bright violet")
+	nimbusTeam.AutoAssignable = false
+	nimbusTeam.Parent = Teams
+end
+
+print("✅ Teams ready.")
+
+-- ================================================
+-- Spawn Helpers
+-- ================================================
+local function getSpawn(name)
+	local spawnsFolder = Workspace:FindFirstChild("Spawns")
+	if spawnsFolder then
+		return spawnsFolder:FindFirstChild(name)
+	end
+	return Workspace:FindFirstChild(name)
+end
+
+local function teleportToSpawn(player, spawnName)
+	local spawn = getSpawn(spawnName)
+	if not spawn then
+		warn("⚠️ Spawn not found: " .. spawnName)
+		return
+	end
+	local character = player.Character
+	if character then
+		local hrp = character:FindFirstChild("HumanoidRootPart")
+		if hrp then
+			hrp.CFrame = spawn.CFrame + Vector3.new(0, 5, 0)
+		end
+	end
+end
+
+-- ================================================
+-- Visual Effects
+-- ================================================
+local function applyNimbusEffect(character)
+	for _, part in character:GetChildren() do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			part.BrickColor = BrickColor.new("Bright violet")
+			part.Material = Enum.Material.Neon
+		end
+	end
+end
+
+local function clearNimbusEffect(character)
+	for _, part in character:GetChildren() do
+		if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+			part.BrickColor = BrickColor.new("Medium stone grey")
+			part.Material = Enum.Material.SmoothPlastic
+		end
+	end
+end
+
+-- ================================================
+-- Reset All Players to Lobby
+-- ================================================
+local function resetAllPlayers()
+	for _, player in Players:GetPlayers() do
+		player.Team = survivorTeam
+		local character = player.Character
+		if character then
+			clearNimbusEffect(character)
+		end
+		teleportToSpawn(player, "LobbySpawn")
+	end
+end
+
+-- ================================================
+-- Tag Detection
+-- ================================================
+local roundActive = false
+
+local function setupTagDetection(nimbusPlayer)
+	local character = nimbusPlayer.Character or nimbusPlayer.CharacterAdded:Wait()
+
+	applyNimbusEffect(character)
+
+	for _, part in character:GetChildren() do
+		if part:IsA("BasePart") then
+			part.Touched:Connect(function(hit)
+				if not roundActive then return end
+
+				local hitPlayer = Players:GetPlayerFromCharacter(hit.Parent)
+				if hitPlayer and hitPlayer ~= nimbusPlayer and hitPlayer.Team == survivorTeam then
+					hitPlayer.Team = nimbusTeam
+					print("⚡ " .. hitPlayer.Name .. " was tagged!")
+
+					local hitChar = hitPlayer.Character
+					if hitChar then
+						applyNimbusEffect(hitChar)
+					end
+
+					taggedEvent:FireAllClients(hitPlayer.Name)
+					setupTagDetection(hitPlayer)
+				end
+			end)
+		end
+	end
+end
+
+-- ================================================
+-- Win Check
+-- ================================================
+local function checkWin()
+	for _, player in Players:GetPlayers() do
+		if player.Team == survivorTeam then
+			return nil
+		end
+	end
+	return "nimbus"
+end
+
+-- ================================================
+-- MAIN GAME LOOP
+-- ================================================
+local function runGameLoop()
+	while true do
+
+		-- ── LOBBY PHASE ──────────────────────────────
+		print("🏠 Lobby phase. Waiting for " .. MIN_PLAYERS .. " players...")
+		resetAllPlayers()
+
+		while #Players:GetPlayers() < MIN_PLAYERS do
+			task.wait(1)
+		end
+
+		print("✅ Enough players. Starting lobby countdown.")
+
+		for i = LOBBY_COUNTDOWN, 1, -1 do
+			lobbyEvent:FireAllClients(i)
+			task.wait(1)
+		end
+
+		-- ── ROUND SETUP ──────────────────────────────
+		local allPlayers = Players:GetPlayers()
+		local selectedNimbus = allPlayers[math.random(1, #allPlayers)]
+		print("⚡ Nimbus selected: " .. selectedNimbus.Name)
+
+		for _, player in Players:GetPlayers() do
+			player.Team = survivorTeam
+		end
+
+		selectedNimbus.Team = nimbusTeam
+
+		-- Teleport everyone
+		for _, player in Players:GetPlayers() do
+			task.wait(0.1)
+			if player == selectedNimbus then
+				teleportToSpawn(player, "NimbusSpawn")
+			else
+				teleportToSpawn(player, "SurvivorSpawn")
+			end
+		end
+
+		task.wait(1)
+
+		-- ── ROUND START ───────────────────────────────
+		roundActive = true
+		local elapsed = 0
+		local winner = nil
+
+		setupTagDetection(selectedNimbus)
+		roundStartEvent:FireAllClients(selectedNimbus.Name, ROUND_DURATION)
+		print("🌩️ Round LIVE! Duration: " .. ROUND_DURATION .. " seconds")
+
+		-- Late joiners
+		local lateJoinConn = Players.PlayerAdded:Connect(function(newPlayer)
+			if roundActive then
+				task.wait(2)
+				newPlayer.Team = survivorTeam
+				teleportToSpawn(newPlayer, "SurvivorSpawn")
+				roundStartEvent:FireClient(newPlayer, selectedNimbus.Name, ROUND_DURATION - elapsed)
+			end
+		end)
+
+		-- ── ROUND TIMER ───────────────────────────────
+		while elapsed < ROUND_DURATION and not winner do
+			task.wait(1)
+			elapsed += 1
+			winner = checkWin()
+			timerEvent:FireAllClients(ROUND_DURATION - elapsed)
+
+			if elapsed == ROUND_DURATION - 60 then
+				pcall(function()
+					game.StarterGui:SetCore("SendNotification", {
+						Title = "⏱️ One Minute Left!",
+						Text = "Survivors — hold on!",
+						Duration = 4
+					})
+				end)
+			end
+
+			if elapsed == ROUND_DURATION - 30 then
+				pcall(function()
+					game.StarterGui:SetCore("SendNotification", {
+						Title = "⏱️ 30 Seconds!",
+						Text = "Almost there!",
+						Duration = 4
+					})
+				end)
+			end
+		end
+
+		-- ── ROUND END ─────────────────────────────────
+		roundActive = false
+		lateJoinConn:Disconnect()
+
+		if winner == "nimbus" then
+			print("🌩️ NIMBUS WINS!")
+			roundEndEvent:FireAllClients("nimbus", "")
+		else
+			local survivors = {}
+			for _, player in Players:GetPlayers() do
+				if player.Team == survivorTeam then
+					table.insert(survivors, player.Name)
+				end
+			end
+			local survivorNames = table.concat(survivors, ", ")
+			print("🏆 SURVIVORS WIN! " .. survivorNames)
+			roundEndEvent:FireAllClients("survivors", survivorNames)
+		end
+
+		print("🌩️ Round complete. Resetting in 5 seconds...")
+		task.wait(5)
+	end
+end
+
+-- ================================================
+-- Kick it off
+-- ================================================
+task.spawn(runGameLoop)

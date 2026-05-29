@@ -1,0 +1,203 @@
+-- 🌩️ NimbusGui
+-- Nimbus Tag by Fenra & Cael
+-- StarterGui > LocalScript
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local player = Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- ================================================
+-- Wait for Events
+-- ================================================
+local nimbusEvents = ReplicatedStorage:WaitForChild("NimbusEvents")
+local taggedEvent     = nimbusEvents:WaitForChild("PlayerTagged")
+local timerEvent      = nimbusEvents:WaitForChild("TimerUpdate")
+local roundEndEvent   = nimbusEvents:WaitForChild("RoundEnd")
+local roundStartEvent = nimbusEvents:WaitForChild("RoundStart")
+local lobbyEvent      = nimbusEvents:WaitForChild("LobbyCountdown")
+
+-- ================================================
+-- Build ScreenGui
+-- ================================================
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "NimbusTagGui"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = playerGui
+
+-- ── Timer Label ───────────────────────────────
+local timerLabel = Instance.new("TextLabel")
+timerLabel.Name = "TimerLabel"
+timerLabel.Size = UDim2.new(0, 200, 0, 50)
+timerLabel.Position = UDim2.new(0.5, -100, 0, 20)
+timerLabel.BackgroundTransparency = 1
+timerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+timerLabel.TextScaled = true
+timerLabel.Font = Enum.Font.GothamBold
+timerLabel.Text = ""
+timerLabel.Parent = screenGui
+
+-- ── Lobby Countdown Label ─────────────────────
+local lobbyLabel = Instance.new("TextLabel")
+lobbyLabel.Name = "LobbyLabel"
+lobbyLabel.Size = UDim2.new(0, 400, 0, 80)
+lobbyLabel.Position = UDim2.new(0.5, -200, 0.4, 0)
+lobbyLabel.BackgroundTransparency = 1
+lobbyLabel.TextColor3 = Color3.fromRGB(180, 130, 255)
+lobbyLabel.TextScaled = true
+lobbyLabel.Font = Enum.Font.GothamBold
+lobbyLabel.Text = ""
+lobbyLabel.Parent = screenGui
+
+-- ── Round Splash Label ────────────────────────
+local splashLabel = Instance.new("TextLabel")
+splashLabel.Name = "SplashLabel"
+splashLabel.Size = UDim2.new(0, 500, 0, 100)
+splashLabel.Position = UDim2.new(0.5, -250, 0.35, 0)
+splashLabel.BackgroundTransparency = 1
+splashLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+splashLabel.TextScaled = true
+splashLabel.Font = Enum.Font.GothamBold
+splashLabel.Text = ""
+splashLabel.Parent = screenGui
+
+-- ── Tagged Flash Frame ────────────────────────
+local flashFrame = Instance.new("Frame")
+flashFrame.Name = "FlashFrame"
+flashFrame.Size = UDim2.new(1, 0, 1, 0)
+flashFrame.Position = UDim2.new(0, 0, 0, 0)
+flashFrame.BackgroundColor3 = Color3.fromRGB(140, 0, 255)
+flashFrame.BackgroundTransparency = 1
+flashFrame.ZIndex = 10
+flashFrame.Parent = screenGui
+
+-- ── Win Screen Frame ──────────────────────────
+local winFrame = Instance.new("Frame")
+winFrame.Name = "WinFrame"
+winFrame.Size = UDim2.new(1, 0, 1, 0)
+winFrame.Position = UDim2.new(0, 0, 0, 0)
+winFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+winFrame.BackgroundTransparency = 1
+winFrame.ZIndex = 9
+winFrame.Visible = false
+winFrame.Parent = screenGui
+
+local winLabel = Instance.new("TextLabel")
+winLabel.Name = "WinLabel"
+winLabel.Size = UDim2.new(0, 600, 0, 120)
+winLabel.Position = UDim2.new(0.5, -300, 0.4, 0)
+winLabel.BackgroundTransparency = 1
+winLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+winLabel.TextScaled = true
+winLabel.Font = Enum.Font.GothamBold
+winLabel.Text = ""
+winLabel.ZIndex = 10
+winLabel.Parent = winFrame
+
+-- ================================================
+-- Helper: flash screen
+-- ================================================
+local function flashScreen(color)
+	flashFrame.BackgroundColor3 = color
+	flashFrame.BackgroundTransparency = 0.3
+	task.wait(0.2)
+	flashFrame.BackgroundTransparency = 0.6
+	task.wait(0.2)
+	flashFrame.BackgroundTransparency = 1
+end
+
+-- ================================================
+-- Helper: show splash then fade
+-- ================================================
+local function showSplash(text, color, duration)
+	splashLabel.Text = text
+	splashLabel.TextColor3 = color
+	splashLabel.TextTransparency = 0
+	task.wait(duration or 3)
+	for i = 1, 10 do
+		splashLabel.TextTransparency = i / 10
+		task.wait(0.05)
+	end
+	splashLabel.Text = ""
+	splashLabel.TextTransparency = 0
+end
+
+-- ================================================
+-- Lobby Countdown
+-- ================================================
+lobbyEvent.OnClientEvent:Connect(function(timeLeft)
+	timerLabel.Text = ""
+	lobbyLabel.Text = "🌩️ Round starts in " .. timeLeft .. "..."
+	if timeLeft == 1 then
+		task.wait(0.8)
+		lobbyLabel.Text = ""
+	end
+end)
+
+-- ================================================
+-- Round Start
+-- ================================================
+roundStartEvent.OnClientEvent:Connect(function(nimbusName, duration)
+	lobbyLabel.Text = ""
+	timerLabel.Text = "⏱️ " .. duration
+
+	if player.Name == nimbusName then
+		flashScreen(Color3.fromRGB(140, 0, 255))
+		showSplash("⚡ YOU ARE NIMBUS ⚡", Color3.fromRGB(200, 100, 255), 3)
+	else
+		showSplash("🌩️ " .. nimbusName .. " is NIMBUS!\nRun!", Color3.fromRGB(255, 255, 255), 3)
+	end
+end)
+
+-- ================================================
+-- Timer Update
+-- ================================================
+timerEvent.OnClientEvent:Connect(function(timeLeft)
+	timerLabel.Text = "⏱️ " .. timeLeft
+
+	if timeLeft <= 10 then
+		timerLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
+	else
+		timerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	end
+end)
+
+-- ================================================
+-- Tagged
+-- ================================================
+taggedEvent.OnClientEvent:Connect(function(taggedName)
+	if player.Name == taggedName then
+		flashScreen(Color3.fromRGB(140, 0, 255))
+		showSplash("⚡ YOU WERE TAGGED!", Color3.fromRGB(200, 100, 255), 2)
+	else
+		showSplash("⚡ " .. taggedName .. " was tagged!", Color3.fromRGB(255, 255, 255), 2)
+	end
+end)
+
+-- ================================================
+-- Round End
+-- ================================================
+roundEndEvent.OnClientEvent:Connect(function(winner, survivorNames)
+	timerLabel.Text = ""
+	lobbyLabel.Text = ""
+
+	winFrame.BackgroundTransparency = 0.3
+	winFrame.Visible = true
+
+	if winner == "nimbus" then
+		winLabel.Text = "🌩️ NIMBUS WINS!\nAll survivors were tagged!"
+		winLabel.TextColor3 = Color3.fromRGB(200, 100, 255)
+	else
+		winLabel.Text = "🏆 SURVIVORS WIN!\n" .. survivorNames
+		winLabel.TextColor3 = Color3.fromRGB(100, 220, 255)
+	end
+
+	task.wait(5)
+
+	winFrame.Visible = false
+	winFrame.BackgroundTransparency = 1
+	winLabel.Text = ""
+end)
+
+print("✅ NimbusGui loaded.")

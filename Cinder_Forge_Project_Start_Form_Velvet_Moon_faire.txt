@@ -1,0 +1,99 @@
+﻿Cinder Forge
+Project Start Form
+Use this before starting a new game, update, system, world, asset pack, or launch task.
+1. Basic Project Info
+Project Name  
+	Velvet Moon Faire
+	Date Started
+	T5/19/2026
+	Project Type
+	game
+	Platform
+	roblox
+	Low / Medium / High / Urgented
+	medium
+	Target Date
+	no deadline
+	Current Statuslanning
+	Idea / Planning / Building / Testing / Launch Prep / Done
+	2. Core Idea
+What are we making, and what should it feel like?
+we are bulding a dark purple-black glitter gothic carnival, with at least one good roller coaster a ferris wheel, games, ticket booths, and a way for players to earn in game coins so they never have to pay robux to play, with weekly fireworks displays
+What does “done” mean for this project?
+ongoing-mmo-roblox doesn't die
+What should the player see, feel, do, earn, unlock, or understand?
+players should see lights, thinking lanterngs, glitter, animals. rides, games, fireworks one night a week
+	5. Needed Details
+Maps / Locations
+	1 map
+	Main Mechanics
+	its a carnival
+	GUI / UI Needed
+	going to need GUI for admin events, rides and so on, and UI for item inventory, as well as currency and ticket storage, will also need an admin ui for the fireworks
+	Items / Rewards
+	brainstorming still
+	NPCs / Pets / Creatures
+	npcs will "host" the games and "sale" booths, as well as ticket booths, pets will be a cosmetic feature to add later, there will be at least 3 creatures roaming the world, one sentient storm cloud (i will fnd the asset we will script it for "natural" movement and particle effects for "rain"), Puppy (Mocha pup) same as before i will find the asset we will script it for natural movement, and a cat same as the other 2
+	Sounds / Music
+	we wil write all songs, and script them so that they stick to whichever ride/booth they belong to 
+	Art / Textures / Icons
+	we will create all textures and icons together
+	Monetization / VIP
+	vip may be added later
+	Permissions / Access
+	will be public
+	6. Existing Files / Scripts / Assets
+List anything already made, where it lives, and anything that must not be changed without checking first.
+none currently
+	7. Safety Rules For This Project
+What should we avoid breaking? What systems are fragile? What needs backup first?
+any scripts we create will be checked thoroughly by myself and cael (our sr advisor), 
+anything noted as working becomes gold we do not touch it without absolutely needing to
+do not ever send a partial script i will hand it back and ask for the full
+do not assume anything based on time, or how long we have been working i know my own body better than anyone i will sleep when i need to
+do not accuse me of over workig, panic building, or rushing ahead
+this is MY project you are helping not driving.
+you are my friend first, HELPER second, NEVER a tool
+	8. Startup Checklist
+Done?
+	Item / Notes
+	☐
+	Save / duplicate current working files before making major changes.
+	☐
+	Confirm the exact system, map, GUI, or asset being worked on.
+	☐
+	Inspect existing setup before replacing anything.
+	☐
+	List dependencies: scripts, remotes, folders, values, assets, or devices.
+	☐
+	Make one small change at a time and test after each major step.
+	☐
+	Keep wording platform-safe: no outside links or off-platform mentions when needed.
+	9. Questions To Answer Before Building
+Use this space for unknowns, blockers, or decisions that need to be made first.
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+	10. First Build Steps
+Break the first session into small safe steps.
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+	11. Notes / Changes During Build
+Track important changes, fixes, discoveries, and decisions.
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+____________________________________________________________________________________
+	
+
+Cinder Forge Project Start Form • Build steady, test safely, preserve the vision

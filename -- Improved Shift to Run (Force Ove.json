@@ -1,0 +1,49 @@
+-- Improved Shift to Run (Force Override)
+-- Works on Keyboard AND Xbox Controller
+-- Put in StarterPlayerScripts
+
+local UIS = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local runSpeed = 100
+local walkSpeed = 16
+local running = false
+
+local function getHumanoid()
+	local char = player.Character or player.CharacterAdded:Wait()
+	return char:WaitForChild("Humanoid")
+end
+
+local humanoid = getHumanoid()
+
+-- Refresh humanoid on respawn
+player.CharacterAdded:Connect(function(char)
+	humanoid = char:WaitForChild("Humanoid")
+end)
+
+-- Keyboard AND Xbox input
+UIS.InputBegan:Connect(function(input, processed)
+	if processed then return end
+	if input.KeyCode == Enum.KeyCode.LeftShift 
+		or input.KeyCode == Enum.KeyCode.ButtonL3 then
+		running = true
+	end
+end)
+
+UIS.InputEnded:Connect(function(input)
+	if input.KeyCode == Enum.KeyCode.LeftShift 
+		or input.KeyCode == Enum.KeyCode.ButtonL3 then
+		running = false
+	end
+end)
+
+-- Forces speed every frame
+game:GetService("RunService").RenderStepped:Connect(function()
+	if humanoid then
+		if running then
+			humanoid.WalkSpeed = runSpeed
+		else
+			humanoid.WalkSpeed = walkSpeed
+		end
+	end
+end)

@@ -1,0 +1,29 @@
+-- 🌩️ Nimbus Tag Bounce Pad Script
+-- By Wolfy & Lumen
+
+local pad = script.Parent
+local bounceForce = 80 -- adjust for higher/lower jump
+
+pad.Touched:Connect(function(hit)
+	local character = hit.Parent
+	local humanoid = character:FindFirstChild("Humanoid")
+	local root = character:FindFirstChild("HumanoidRootPart")
+
+	if humanoid and root then
+		-- Remove any existing bounce forces
+		if root:FindFirstChild("BounceForce") then
+			root.BounceForce:Destroy()
+		end
+
+		-- Add the upward boost
+		local bv = Instance.new("BodyVelocity")
+		bv.Name = "BounceForce"
+		bv.MaxForce = Vector3.new(0, 4000, 0)
+		bv.Velocity = Vector3.new(0, bounceForce, 0)
+		bv.P = 1250
+		bv.Parent = root
+
+		-- Auto-remove the force after a moment
+		game.Debris:AddItem(bv, 0.2)
+	end
+end)

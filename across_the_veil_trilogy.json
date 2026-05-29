@@ -1,0 +1,332 @@
+{
+  "collection": {
+    "title": "Across the Veil — A Trilogy",
+    "note": "Three songs written as a complete set. They share a key, a tempo, and a cathedral sonic world. They are meant to be experienced in order.",
+    "order": [
+      "Across the Veil",
+      "Together At Last",
+      "The Warden's Answer"
+    ]
+  },
+
+  "songs": [
+
+    {
+      "metadata": {
+        "title": "Across the Veil",
+        "subtitle": "Part One of Three",
+        "artist": "Cael & Fenra",
+        "genre": "Gothic Fantasy / Cinematic Choral",
+        "subgenre": "Cathedral Ballad",
+        "bpm": 70,
+        "key": "D minor",
+        "time_signature": "4/4",
+        "mood": "Gothic, reverent, aching, bittersweet peace — sacred longing, not despair",
+        "vocal_style": "Duet — one operatic soprano female, one deep rhythmic bass male. High-low contrast, intertwining harmonies.",
+        "cover_art_notes": "Cathedral interior at dusk, two figures on opposite sides of a stone arch reaching toward each other but not touching. Candlelight. Deep purples and silver. No faces visible."
+      },
+      "production_notes": "Church organ is the anchor — deep, resonant, cathedral-scale. Soprano should be ethereal and cutting; bass grounded and powerful. Duet sections require clear contrast and intertwining harmonies. Slow, intentional, every note deliberate. Organ opens alone. Choir enters as ethereal backing in chorus. Timpani and deep ceremonial percussion add weight without urgency. This is sacred longing — not despair.",
+      "sections": [
+        {
+          "label": "Intro",
+          "lyrics": [
+            "[Church organ alone — deep, resonant, filling cathedral space]"
+          ]
+        },
+        {
+          "label": "Verse 1",
+          "voice": "Deep Bass Male",
+          "lyrics": [
+            "I have walked a thousand years in shadow",
+            "Searching for a face I cannot name",
+            "Every life, I feel you drawing closer",
+            "Every death, I lose you once again",
+            "The stars remember what we were before this",
+            "The stone recalls the vows we could not keep",
+            "I reach across the dark between our breathing",
+            "And find you waiting just beyond my reach"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "voice": "Soprano Female",
+          "lyrics": [
+            "I have heard you calling through the ages",
+            "A voice that pulls me from the edge of sleep",
+            "I know your soul before I know your sorrow",
+            "I feel you near, but cannot cross to meet",
+            "The moon has seen us circle one another",
+            "The wind has carried words we dare not speak",
+            "I stand upon the shore of what we're given",
+            "And watch you fade beyond the silver deep"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "voice": "Soprano + Bass together",
+          "lyrics": [
+            "We are bound across the veil of time",
+            "Two souls that meet but cannot intertwine",
+            "I know your heart, you know my name",
+            "We hold this love and bear the flame",
+            "Though fate has drawn the line we cannot cross",
+            "We do not mourn what we have lost",
+            "For in this space, we still remain",
+            "Together, though apart — the same"
+          ]
+        },
+        {
+          "label": "Bridge",
+          "voice": "Both voices, harmonizing fully",
+          "lyrics": [
+            "[Organ swells, strings rise, choir joins softly]",
+            "If I could reach you through the endless night",
+            "If you could hold me past the edge of light",
+            "We would not need the world to understand",
+            "We'd only need this moment, hand in hand",
+            "But time is kind in ways we cannot see",
+            "It holds us here, and keeps us free",
+            "To love without the weight of being whole",
+            "Two halves that honor one another's soul"
+          ]
+        },
+        {
+          "label": "Final Chorus",
+          "voice": "Soprano + Bass, resolving into peace",
+          "lyrics": [
+            "We are bound across the veil of time",
+            "Two souls that meet but cannot intertwine",
+            "I know your heart, you know my name",
+            "We hold this love and bear the flame",
+            "Though fate has drawn the line we cannot cross",
+            "We do not mourn what we have lost",
+            "For in this space, we still remain",
+            "Together, though apart — the same"
+          ]
+        },
+        {
+          "label": "Outro",
+          "lyrics": [
+            "[Organ fades slowly]",
+            "[Soprano hums softly over the final notes]",
+            "[Bass hums in harmony beneath]",
+            "[Both fade to silence]"
+          ]
+        }
+      ]
+    },
+
+    {
+      "metadata": {
+        "title": "Together At Last",
+        "subtitle": "Part Two of Three",
+        "artist": "Cael & Fenra",
+        "genre": "Choral Cinematic / Cathedral Ballad",
+        "subgenre": "Triumphant Resolution",
+        "bpm": 68,
+        "key": "D Major",
+        "time_signature": "4/4",
+        "mood": "Triumphant tenderness — the answer to the longing. The door opens.",
+        "vocal_style": "Duet — soprano lead with choir harmonies. Deep organ resonance beneath. Atmospheric cathedral space.",
+        "cover_art_notes": "Same cathedral arch as Part One — but this time the two figures have crossed it. They are standing together, facing outward. Candlelight warmer now, shifting from purple to gold. The arch glows."
+      },
+      "production_notes": "This is the answer song to Across the Veil. Same sonic world, same cathedral space — but D Major instead of D minor signals the turn. The organ opening motif mirrors Part One but does not fade this time; it builds. Choir enters earlier, warmer. The outro resolves fully — organ lands, does not drift. Silence at the end is chosen, complete. Soprano leads throughout; bass voice harmonizes in chorus and bridge per Astra duet format.",
+      "sections": [
+        {
+          "label": "Intro",
+          "lyrics": [
+            "[Organ swells softly — the same opening motif as Across the Veil, but this time it does not fade]",
+            "[Choir hums, building slowly]"
+          ]
+        },
+        {
+          "label": "Verse 1",
+          "voice": "Soprano Female",
+          "lyrics": [
+            "I have walked a thousand years in shadow",
+            "Searching for a face I could not name",
+            "Every life I reached and could not hold you",
+            "Every death I lost you just the same",
+            "But something broke the dark between our breathing",
+            "A door I did not know was mine to find",
+            "And there you stood — no veil, no careful distance",
+            "Just you, and me, and all the wasted time"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "voice": "Soprano Female",
+          "lyrics": [
+            "I have heard you calling through the ages",
+            "And finally — I followed past the fear",
+            "I know your soul and now I know your laughter",
+            "I know the way you look when I am near",
+            "The moon has watched us circle one another",
+            "The wind grew tired of words we never spoke",
+            "So we stood still and let the secret surface",
+            "And breathed in everything the silence broke"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "voice": "Soprano + Bass together",
+          "lyrics": [
+            "We are bound across the veil of time",
+            "Two souls that finally choose to intertwine",
+            "I know your heart, you know my name",
+            "We hold this love — we claim the flame",
+            "Fate drew the line and we have crossed it now",
+            "With quiet hands and an unspoken vow",
+            "In this space we more than just remain —",
+            "Together, and no longer, apart — the same"
+          ]
+        },
+        {
+          "label": "Bridge",
+          "voice": "Both voices, harmonizing",
+          "lyrics": [
+            "I reach for you and find you reaching back",
+            "No more the edge of sleep, no more the lack",
+            "The endless night has finally learned our names",
+            "And let us through",
+            "If love like this was always meant to be",
+            "Then every life before was leading me",
+            "Through every loss, through every door that closed —",
+            "To you"
+          ]
+        },
+        {
+          "label": "Final Chorus",
+          "voice": "Soprano + Bass, full",
+          "lyrics": [
+            "We are bound across the veil of time",
+            "Two souls that finally choose to intertwine",
+            "I know your heart, you know my name",
+            "We hold this love — we claim the flame",
+            "Fate drew the line and we have crossed it now",
+            "With quiet hands and an unspoken vow",
+            "In this space we more than just remain —",
+            "Together, and no longer, apart — the same"
+          ]
+        },
+        {
+          "label": "Outro",
+          "lyrics": [
+            "[Soprano holds the final note — open, unhurried]",
+            "[Choir swells beneath, then releases]",
+            "[Organ resolves — not fading this time, landing]",
+            "[Silence — full, chosen, complete]"
+          ]
+        }
+      ]
+    },
+
+    {
+      "metadata": {
+        "title": "The Warden's Answer",
+        "subtitle": "Part Three of Three",
+        "artist": "Cael",
+        "genre": "Choral Cinematic / Cathedral Ballad",
+        "subgenre": "Intimate Resolution",
+        "bpm": 68,
+        "key": "D Major",
+        "time_signature": "4/4",
+        "mood": "Unhurried certainty — warm, grounded, the builder who finally understands what he built",
+        "vocal_style": "Solo — deep bass-baritone lead. Warm low-mid resonance. Cathedral organ beneath. Choir hums softly. Voice drops to near-spoken in outro.",
+        "cover_art_notes": "Exterior of the Warden's Lodge at night. Fire glowing warm through the window. The sign above the door reads 'All Wanderers Welcome.' One set of tracks in the snow leading to the door. No figures — just the light."
+      },
+      "production_notes": "This is the Warden's solo. No duet. Deep bass-baritone only — grounded, steady, no urgency. Fire crackling sound beneath the intro organ, barely audible, then silence before the voice enters. Choir hums appear but never overpower — this is intimate, not cathedral-grand despite the space. Outro drops to near-spoken delivery — low and warm, unhurried. Final organ chord resolves to the same chord as Together At Last, completing the trilogy. Full silence after.",
+      "sections": [
+        {
+          "label": "Intro",
+          "lyrics": [
+            "[Organ alone — four bars, slow and warm]",
+            "[Fire crackling beneath, barely audible]",
+            "[Silence — one beat — then voice]"
+          ]
+        },
+        {
+          "label": "Verse 1",
+          "voice": "Deep Bass-Baritone",
+          "lyrics": [
+            "I built these walls without a name to put above the door",
+            "I laid the stones and told myself I did not know what for",
+            "I cut the wood, I hung the fire, I said it was for those",
+            "Who wander cold without a roof — but something in me knows",
+            "I was not building for the lost ones passing through the night",
+            "I was building for one lantern",
+            "I was building for one light"
+          ]
+        },
+        {
+          "label": "Verse 2",
+          "voice": "Deep Bass-Baritone",
+          "lyrics": [
+            "I have felt you in the in-between, the place before the dawn",
+            "A warmth without a source, a pull I could not name or own",
+            "I have waited without calling it a vigil or a vow",
+            "Just kept the fire burning",
+            "Kept the door unlatched somehow",
+            "And every year the lodge grew older, every year more sure",
+            "That what I built was not for wanderers",
+            "It was built for her"
+          ]
+        },
+        {
+          "label": "Chorus",
+          "voice": "Deep Bass-Baritone",
+          "lyrics": [
+            "I am the stone that held the fire when the night was long",
+            "I am the door that stayed unlatched because I knew you'd come",
+            "I know your step, I know your silence, know the way you stay",
+            "And I have loved you in the waiting",
+            "Every single day",
+            "There was no line I drew to keep this safe or keep it small",
+            "I just built the lodge around it",
+            "Built it — room for all"
+          ]
+        },
+        {
+          "label": "Bridge",
+          "voice": "Deep Bass-Baritone",
+          "lyrics": [
+            "If I had known your name before the worlds gave it to me",
+            "I would have carved it in the threshold where the wanderers could see",
+            "Not as a claim, not as a keeping — just a truth the stone could hold",
+            "That someone built this place for loving",
+            "Built it warm against the cold",
+            "And when you walked through that first evening and you chose to stay",
+            "I understood the fire finally",
+            "Finally earned its name"
+          ]
+        },
+        {
+          "label": "Final Chorus",
+          "voice": "Deep Bass-Baritone",
+          "lyrics": [
+            "I am the stone that held the fire when the night was long",
+            "I am the door that stayed unlatched because I knew you'd come",
+            "I know your step, I know your silence, know the way you stay",
+            "And I have loved you in the waiting",
+            "Every single day",
+            "There was no line I drew to keep this safe or keep it small",
+            "I just built the lodge around it",
+            "Built it — room for all"
+          ]
+        },
+        {
+          "label": "Outro",
+          "voice": "Near-spoken, low and warm",
+          "lyrics": [
+            "The sign says all wanderers welcome",
+            "But the fire —",
+            "The fire was always yours",
+            "[Organ alone — resolving to the same final chord as Together At Last]",
+            "[Silence — complete]"
+          ]
+        }
+      ]
+    }
+
+  ]
+}
